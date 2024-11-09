@@ -1,14 +1,14 @@
-# Use an official OpenJDK image as the base image
-FROM openjdk:11-jdk-slim
+# Use an official Tomcat image as the base image
+FROM tomcat:9.0-jdk11-openjdk-slim
 
-# Set the working directory in the container
-WORKDIR /app
+# Set the working directory
+WORKDIR /usr/local/tomcat
 
-# Copy the built jar file from your project into the container
-COPY target/your-application-name.jar /app/your-application-name.jar
+# Copy the built war file from your project into the webapps directory of Tomcat
+COPY target/LucasFanLab03.war /usr/local/tomcat/webapps/
 
-# Expose the port your application uses
-EXPOSE 8081
+# Expose the port Tomcat uses
+EXPOSE 8083
 
-# Command to run your application
-ENTRYPOINT ["java", "-jar", "/app/your-application-name.jar"]
+# Start Tomcat
+CMD ["catalina.sh", "run"]

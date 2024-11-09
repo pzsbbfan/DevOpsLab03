@@ -27,12 +27,12 @@ pipeline {
             }
             stage('Build Docker Image') {
                 steps {
-                    sh 'docker build -t pzsbbfan/your-image-name .'
+                    sh 'docker build -t pzsbbfan/devopslab03  .'
                 }
             }
             stage('Push Docker Image') {
                 steps {
-                    sh 'docker push pzsbbfan/your-image-name'
+                    sh 'docker push pzsbbfan/devopslab03'
                 }
             }
         }
